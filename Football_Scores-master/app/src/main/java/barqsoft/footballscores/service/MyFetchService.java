@@ -45,6 +45,8 @@ public class MyFetchService extends IntentService {
     public static final String AWAY_GOALS = "goalsAwayTeam";
     public static final String MATCH_DAY = "matchday";
 
+    public static final String SCORE_DATA_UPDATED = "barqsoft.footballscores.service.ACTION_DATA_UPDATED";
+
 
     public MyFetchService() {
         super("MyFetchService");
@@ -226,11 +228,16 @@ public class MyFetchService extends IntentService {
                     values.add(match_values);
                 }
             }
+
             int inserted_data = 0;
             ContentValues[] insert_data = new ContentValues[values.size()];
             values.toArray(insert_data);
-            inserted_data = mContext.getContentResolver().bulkInsert(
-                    DatabaseContract.BASE_CONTENT_URI, insert_data);
+            inserted_data = mContext.getContentResolver().bulkInsert(DatabaseContract.BASE_CONTENT_URI,
+                                                            insert_data);
+
+            // Send data updated Broadcast
+            Intent dataUpdatedIntent = new Intent(SCORE_DATA_UPDATED).setPackage(this.getPackageName());
+            sendBroadcast(dataUpdatedIntent);
 
             Log.v(LOG_TAG, "Succesfully Inserted : " + String.valueOf(inserted_data));
         } catch (JSONException e) {

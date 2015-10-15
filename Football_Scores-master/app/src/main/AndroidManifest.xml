@@ -33,7 +33,20 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="barqsoft.footballscores.MainActivity" />
         </activity>
+
+        <receiver
+            android:name=".widget.LatestScoreWidgetProvider"
+            android:label="@string/latest_score_widget_title" >
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+                <action android:name="barqsoft.footballscores.service.ACTION_DATA_UPDATED" />
+            </intent-filter>
+            <meta-data android:name="android.appwidget.provider"
+                android:resource="@xml/latest_score_widget" />
+        </receiver>
+
         <service android:name=".service.MyFetchService" />
+        <service android:name=".service.LatestScoreWidgetIntentService" />
     </application>
 
 </manifest>
