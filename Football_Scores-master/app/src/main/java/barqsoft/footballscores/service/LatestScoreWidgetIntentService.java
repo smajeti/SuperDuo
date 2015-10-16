@@ -55,24 +55,36 @@ public class LatestScoreWidgetIntentService extends IntentService {
         }
 
         int currentHour = Calendar.getInstance().get(Calendar.HOUR_OF_DAY);
-        String home_name = "N/A";
-        String away_name = "N/A";
-        String matchTimeStr = "N/A";
-        String score = "N/A";
+        String home_name = data.getString(ScoresAdapter.COL_HOME);
+        String away_name = data.getString(ScoresAdapter.COL_AWAY);
+        String matchTimeStr = data.getString(ScoresAdapter.COL_MATCHTIME);
+        String score = Utilies.getScores(data.getInt(ScoresAdapter.COL_HOME_GOALS), data.getInt(ScoresAdapter.COL_AWAY_GOALS));
+        int timeToNextMatch = 24; // hours
         while (!data.isAfterLast()) {
-            home_name = data.getString(ScoresAdapter.COL_HOME);
-            away_name = data.getString(ScoresAdapter.COL_AWAY);
-            matchTimeStr = data.getString(ScoresAdapter.COL_MATCHTIME);
-            score = Utilies.getScores(data.getInt(ScoresAdapter.COL_HOME_GOALS), data.getInt(ScoresAdapter.COL_AWAY_GOALS));
-
-            String hourStr = matchTimeStr.substring(0, matchTimeStr.lastIndexOf(':'));
+            // Here we try to find the next match that's closest to current time
+            String tempTimeStr = data.getString(ScoresAdapter.COL_MATCHTIME);
+            String hourStr = tempTimeStr.substring(0, tempTimeStr.lastIndexOf(':'));
             int matchTimeHour = Integer.parseInt(hourStr);
-            if (matchTimeHour >= currentHour) {
-                break;
+            int timeDiff = matchTimeHour - currentHour;
+            if ((timeDiff >= 0) && (timeDiff <= timeToNextMatch))   {
+                // matches after current time
+                timeToNextMatch = timeDiff;
+                home_name = data.getString(ScoresAdapter.COL_HOME);
+                away_name = data.getString(ScoresAdapter.COL_AWAY);
+                matchTimeStr = data.getString(ScoresAdapter.COL_MATCHTIME);
+                score = Utilies.getScores(data.getInt(ScoresAdapter.COL_HOME_GOALS), data.getInt(ScoresAdapter.COL_AWAY_GOALS));
+            } else if (timeDiff < 0) {
+                // matches before current time
+                home_name = data.getString(ScoresAdapter.COL_HOME);
+                away_name = data.getString(ScoresAdapter.COL_AWAY);
+                matchTimeStr = data.getString(ScoresAdapter.COL_MATCHTIME);
+                score = Utilies.getScores(data.getInt(ScoresAdapter.COL_HOME_GOALS), data.getInt(ScoresAdapter.COL_AWAY_GOALS));
             }
 
             data.moveToNext();
         }
+
+        data.close();
 
         // Perform this loop procedure for each Today widget
         for (int appWidgetId : appWidgetIds) {
@@ -97,7 +109,6 @@ public class LatestScoreWidgetIntentService extends IntentService {
             appWidgetManager.updateAppWidget(appWidgetId, views);
         }
 
-        data.close();
 
     }
 
