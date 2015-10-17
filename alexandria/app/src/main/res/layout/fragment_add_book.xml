@@ -13,7 +13,7 @@
             android:layout_width="wrap_content"
             android:id="@+id/eancontainer"
             android:layout_height="wrap_content"
-            android:layout_marginTop="30dp"
+            android:layout_marginTop="@dimen/thrice_standard_margin"
             android:layout_alignParentTop="true"
             android:layout_centerHorizontal="true">
 
@@ -27,7 +27,7 @@
                 android:maxLength="@integer/ean_size"
                 android:maxLines="1"
                 android:hint="@string/input_hint"
-                android:paddingRight="20dp"/>
+                android:paddingRight="@dimen/twice_standard_margin"/>
 
             <Button
                 android:layout_width="wrap_content"
@@ -44,8 +44,8 @@
             android:textSize="@dimen/head_line"
             android:textIsSelectable="true"
             android:textStyle="bold"
-            android:layout_marginTop="25dp"
-            android:paddingRight="20dp"
+            android:layout_marginTop="@dimen/book_title_margin_top"
+            android:paddingRight="@dimen/twice_standard_margin"
             android:layout_below="@+id/eancontainer"
             android:layout_alignLeft="@+id/eancontainer"
             android:layout_alignStart="@+id/eancontainer"/>
@@ -54,7 +54,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/bookSubTitle"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="@dimen/standard_margin_val"
             android:layout_below="@+id/bookTitle"
             android:maxLines="3"
             android:ellipsize="end"
@@ -67,7 +67,7 @@
             android:id="@+id/authors"
             android:gravity="end"
             android:textSize="@dimen/small_fontsize"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="@dimen/twice_standard_margin"
             android:layout_below="@+id/bookSubTitle"
             android:layout_alignRight="@+id/eancontainer"
             android:layout_alignEnd="@+id/eancontainer"
@@ -88,14 +88,14 @@
             android:id="@+id/categories"
             android:textSize="@dimen/small_fontsize"
             android:layout_below="@+id/bookCover"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="@dimen/twice_standard_margin"
             android:layout_alignLeft="@+id/eancontainer"
             android:layout_alignStart="@+id/eancontainer"/>
 
         <LinearLayout
             android:orientation="horizontal"
             android:layout_width="fill_parent"
-            android:layout_height="50dip"
+            android:layout_height="@dimen/add_books_bottom_layout_height"
             android:layout_alignParentBottom="true"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true">

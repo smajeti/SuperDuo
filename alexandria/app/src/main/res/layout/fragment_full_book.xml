@@ -24,11 +24,11 @@
                     android:textSize="@dimen/head_line"
                     android:textIsSelectable="true"
                     android:textStyle="bold"
-                    android:paddingRight="20dp"
+                    android:paddingRight="@dimen/twice_standard_margin"
                     android:layout_alignParentTop="true"
                     android:layout_alignParentLeft="true"
                     android:layout_alignParentStart="true"
-                    android:layout_margin="10dp"/>
+                    android:layout_margin="@dimen/standard_margin_val"/>
 
                 <ImageView
                     android:layout_width="wrap_content"
@@ -46,9 +46,9 @@
                     android:id="@+id/fullBookSubTitle"
                     android:maxLines="5"
                     android:ellipsize="end"
-                    android:textSize="18sp"
-                    android:layout_marginLeft="20dp"
-                    android:layout_marginRight="10dp"
+                    android:textSize="@dimen/full_book_subtitle_txt_size"
+                    android:layout_marginLeft="@dimen/twice_standard_margin"
+                    android:layout_marginRight="@dimen/standard_margin_val"
                     android:layout_alignTop="@+id/fullBookCover"
                     android:layout_toRightOf="@+id/fullBookCover"
                     android:layout_toEndOf="@+id/fullBookCover"/>
@@ -59,9 +59,9 @@
                     android:layout_height="wrap_content"
                     android:id="@+id/fullBookDesc"
                     android:ellipsize="end"
-                    android:layout_marginLeft="10dp"
+                    android:layout_marginLeft="@dimen/standard_margin_val"
                     android:layout_below="@+id/fullBookCover"
-                    android:layout_margin="10dp"
+                    android:layout_margin="@dimen/standard_margin_val"
                     />
 
 
@@ -70,8 +70,8 @@
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/fullBookDesc"
-                    android:layout_marginTop="10dp"
-                    android:padding="10dp">
+                    android:layout_marginTop="@dimen/standard_margin_val"
+                    android:padding="@dimen/standard_margin_val">
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -120,8 +120,8 @@
                 style="?android:attr/buttonBarButtonStyle"
                 android:id="@+id/delete_button"
                 android:drawableLeft="@drawable/ic_action_discard"
-                android:layout_marginRight="10dp"
-                android:layout_marginBottom="5dp"/>
+                android:layout_marginRight="@dimen/standard_margin_val"
+                android:layout_marginBottom="@dimen/delete_button_bottom_margin"/>
         </LinearLayout>
 
     </LinearLayout>

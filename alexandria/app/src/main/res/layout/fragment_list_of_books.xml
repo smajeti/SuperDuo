@@ -25,20 +25,20 @@
             android:id="@+id/searchText"
             android:inputType="text"
             android:saveEnabled="true"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="@dimen/standard_margin_val"
             android:layout_gravity="center_horizontal"
             android:layout_toLeftOf="@+id/searchButton"
             android:layout_toStartOf="@+id/searchButton"
-            android:layout_marginLeft="10dp"
-            android:layout_marginRight="10dp"
-            android:layout_marginBottom="10dp"/>
+            android:layout_marginLeft="@dimen/standard_margin_val"
+            android:layout_marginRight="@dimen/standard_margin_val"
+            android:layout_marginBottom="@dimen/standard_margin_val"/>
 
 
         <ListView android:id="@+id/listOfBooks"
                   android:layout_width="match_parent"
                   android:layout_height="match_parent"
                   android:layout_alignParentLeft="true"
-                  android:layout_marginLeft="0dp"
+                  android:layout_marginLeft="@dimen/list_view_left_margin"
                   android:layout_below="@+id/searchText"
                   android:layout_alignRight="@id/searchButton"
                   android:layout_alignParentRight="true"
