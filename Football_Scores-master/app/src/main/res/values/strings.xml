@@ -39,5 +39,5 @@
     <string name="latest_score_widget_title">Latest Football Scores</string>
     <string name="vs_text">vs</string>
     <string name="date_format" traslatable="false"><xliff:g id="temp">yyyy-MM-dd</xliff:g></string>
-    <string name="share_button_description_txt">Share Button</string>
+    <string name="share_button_description_txt">Share</string>
 </resources>
